@@ -10,28 +10,28 @@ import java.util.concurrent.TimeUnit;
  * 模拟redis 集群A
  */
 @Slf4j
-@Service
-public class ACatchAdapter implements ICatchAdapter {
+@Service("BCatchAdapter")
+public class BCatchAdapter implements ICatchAdapter {
     @Override
     public String get(String key) {
-        log.info("ACatch -> function : get key :{}",key);
+        log.info("BCatch -> function : get key :{}",key);
         return null;
     }
 
     @Override
     public void set(String key, String value) {
-        log.info("ACatch -> function : set key {}，value{}",key,value);
+        log.info("ACatch -> function : set key{},value :{}",key,value);
     }
 
     @Override
     public void set(String key, String value, long timeout, TimeUnit timeUnit) {
-        log.info("ACatch -> function : set ,key{}，value{}，timeout{}，timeUnit{}",key,value,timeout,timeUnit);
+        log.info("BCatch -> function : set key {},value {},timeout {},timeUnit {}",key,value,timeout,timeUnit);
 
     }
 
     @Override
     public void del(String key) {
-        log.info("ACatch -> function : del key {}",key);
+        log.info("BCatch -> function : del key {}",key);
 
     }
 }
