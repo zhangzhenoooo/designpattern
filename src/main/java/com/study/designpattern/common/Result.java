@@ -1,35 +1,30 @@
 package com.study.designpattern.common;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Create by zhangz on 2020/12/10
  */
-public class Result implements Serializable {
+@Data
+public class Result<T> implements Serializable {
+    private boolean isSuccess;
     private String code;
     private String message;
-    private List date;
+    private T date;
 
-    public Result success(String code,String message){
+    public   Result(boolean isSuccess,String code,String message){
+        this.isSuccess = isSuccess;
         this.code = code;
         this.message = message;
-        return this;
+    }
+    public  static  Result succeed (String message){
+       return new Result(true,"0",message);
+    }
+    public  static  Result failed(String message){
+        return new Result(false,"1",message);
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

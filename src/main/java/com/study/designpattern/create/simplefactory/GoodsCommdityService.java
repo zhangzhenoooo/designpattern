@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -19,7 +18,7 @@ public class GoodsCommdityService implements  Comodity {
 
     @Override
     public void senCommdity(String userId, String commdityId, String businessId, Map<Object, Object> extMap) {
-        logger.info("请求参数: => userId : {} ,commdityId : {} ,bussinessId : {} ,extMap {}",userId,commdityId,businessId,JSON.toJSON(extMap));
+        logger.info("奖品发送 ==== 请求参数: => userId : {} ,commdityId : {} ,bussinessId : {} ,extMap {}",userId,commdityId,businessId,JSON.toJSON(extMap));
 
     }
 }
