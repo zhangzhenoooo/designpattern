@@ -1,7 +1,7 @@
 package com.study.designpattern.create;
 
-import com.study.designpattern.abstractfactory.AdapterFactory;
-import com.study.designpattern.abstractfactory.ICatchAdapter;
+import com.study.designpattern.create.abstractfactory.AdapterFactory;
+import com.study.designpattern.create.abstractfactory.ICatchAdapter;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class TestAbstractFactory {
     @Test
     private void  test (){
-        ICatchAdapter BCatch = AdapterFactory.getHandler("com.study.designpattern.abstractfactory.BCatchAdapter");
+        ICatchAdapter BCatch = AdapterFactory.getHandler("BCatchAdapter");
         BCatch.del("del");
     }
 }
