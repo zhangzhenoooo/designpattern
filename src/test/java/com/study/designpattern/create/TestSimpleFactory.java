@@ -3,7 +3,6 @@ package com.study.designpattern.create;
 import com.study.designpattern.create.simplefactory.Comodity;
 import com.study.designpattern.create.simplefactory.StoreFactory;
 import org.junit.jupiter.api.Test;
-import org.omg.CORBA.OBJ_ADAPTER;
 
 import java.util.HashMap;
 import java.util.Map;
