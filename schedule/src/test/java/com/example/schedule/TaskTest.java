@@ -35,4 +35,25 @@ public class TaskTest {
         // 便于观察
         Thread.sleep(3000000);
     }
+
+
+    @Test
+    public void  test(){
+
+        System.out.println("##############################################################");
+        String sql = " SELECT "
+                +  "  costcenter,"
+                +  "  costcentercode,"
+                +  "  convert((checktotalqty*ckrate/100),SIGNED) as checkedToQty ,"
+                +  "  (checktotalqty - convert((checktotalqty*ckrate/100),SIGNED) ) as notCheckedToQty ,"
+                +  "  supcheckqty ,"
+                +  "  ytnickname ,"
+                +  "  ytusername ,"
+                +  "  checkcharge   "
+                +  "  from tb_checkorder "
+                +  "  where 1=1 ";
+        System.out.println(sql);
+
+//        System.out.println(Math.random(11.5));
+    }
 }

@@ -26,19 +26,19 @@ public class CommonController {
 
 
     @RequestMapping("/root")
-    @PreAuthorize("hasAuthority('ROLE_ROOT')")
+    @PreAuthorize("hasRole('ROLE_ROOT')")
     public Object root(HttpServletResponse response) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return "root";
     }
     @RequestMapping("/admin")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Object admin(HttpServletResponse response) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return "admin";
     }
     @RequestMapping("/user")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public Object user(HttpServletResponse response) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return "this is a user";
@@ -52,7 +52,7 @@ public class CommonController {
     }
 
     @RequestMapping("/api/users")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Object users(HttpServletResponse response) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return new ArrayList<>();

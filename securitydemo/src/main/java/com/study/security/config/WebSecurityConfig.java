@@ -1,50 +1,48 @@
 package com.study.security.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 /**
- * Create by zhangz on 2021/1/5
+ * Copyright (C), 2019-2019, XXX有限公司
+ * FileName: WebSecurityConfig
+ * Author:   longzhonghua
+ * Date:     2019/5/7 12:27
+ * Description:
+ * History:
+ * <author>          <time>          <version>          <desc>
+ * 作者姓名           修改时间           版本号              描述
  */
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
+@EnableWebSecurity//指定为Spring Security配置类
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
-//        /**
-//         * 1.需要把loginPage,loginProcessingUrl放开 permiAll，否则会进入无限循环重定向
-//         * 2.antMatchers("/doLogin", "/touch","/error404").permitAll()的顺序不重要
-//         * 3.无需要配置 scanBasePackages
-//         */
-//        http
-//                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/touch")
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/login", "/touch").permitAll()
+//        http.authorizeRequests()
+//                .antMatchers("/", "/welcome", "/login").permitAll()
 //                .anyRequest().authenticated()
 //                .and()
-//                .csrf().disable();
+//                .formLogin().loginPage("/login").defaultSuccessUrl("/home")
+//                .and()
+//                .logout().permitAll();
 //    }
 
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-        auth.inMemoryAuthentication()
-                 .passwordEncoder(bCryptPasswordEncoder)
-                 .withUser("root")
-                 .password(bCryptPasswordEncoder.encode("root"))
-                 .roles("ROOT");
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        auth.inMemoryAuthentication().passwordEncoder(bCryptPasswordEncoder)
+                //
+                .withUser("admin").password(bCryptPasswordEncoder.encode("admin")).roles("USER");
     }
+
 }

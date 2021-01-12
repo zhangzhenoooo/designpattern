@@ -1,0 +1,32 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  datasource:
+    dynamic:
+      enable: true
+    druid:
+      # JDBC 配置(驱动类自动从url的mysql识别,数据源类型自动识别)
+      core:
+        url: jdbc:mysql://localhost:3306/taik?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+        username: root
+        password: 123456
+        driver-class-name:  com.mysql.jdbc.Driver
+
+
+
+#mybatis:
+mybatis-plus:
+  global-config:
+    banner: false
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:com/example/**/dao/*.xml
+
+#pagehelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: ture
+  params: count==countSql
+  page-size-zero: true
